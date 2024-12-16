@@ -51,13 +51,23 @@ Un exemple de subscriber en Python permettant de récupérer les données publi�
 Un exemple de traitement en Python. **Ce fichier est un modèle à adapter selon vos protocoles d'étalonnage.**
 
 #### Usage
-1. Modifiez le script pour inclure vos algorithmes d'étalonnage ou de traitement des données.
+1. Modifiez le script avec les bonnes confiugrations et les bonnes mesures.
 2. Lancez le script :
    ```bash
    python traitement.py
    ```
 3. Observez les résultats de votre traitement dans la console ou exportez-les selon vos besoins.
 
+### 05-visualisationLocalisation
+Un exemple de visualisation des bornes et des distances en python. **Ce fichier est un modèle à adapter selon vos protocoles d'étalonnage.**
+#### Usage
+1. Modifiez le script pour récupérer des valeurs réelles de distances dans une bdd
+2. Lancez le script :
+   ```bash
+   python 05-visualisationLocalisation.py
+   ```
+3. Observer le résultats graphiques
+4. 
 ## Notes
 - Ce dépôt est un point de départ et doit être adapté selon vos besoins spécifiques.
 
