@@ -1,4 +1,4 @@
-# Projet ESP32 MQTT RSSI : GELOCALISATION
+# Projet ESP32 MQTT RSSI : GEoLOCALISATION
 
 Ce dépôt contient plusieurs exemples de code et configurations pour travailler avec un ESP32, MQTT et le traitement des données RSSI.
 
