@@ -67,7 +67,7 @@ Un exemple de visualisation des bornes et des distances en python. **Ce fichier 
    python 05-visualisationLocalisation.py
    ```
 3. Observer le résultats graphiques
-4. 
+
 ## Notes
 - Ce dépôt est un point de départ et doit être adapté selon vos besoins spécifiques.
 
