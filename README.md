@@ -38,7 +38,7 @@ Un exemple de code pour l'ESP32 servant de publisher MQTT, envoyant un couple `n
 Un exemple de subscriber en Python permettant de récupérer les données publiées sur MQTT et les sauvgegarder dans une Bdd.
 #### Prérequis
 1. Configurer une bdd avec les bonnes tables et attributs
-2. 
+
 #### Usage
 1. Configurez l'adresse du broker et le topic dans le script Python.
 2. Lancez le script :
