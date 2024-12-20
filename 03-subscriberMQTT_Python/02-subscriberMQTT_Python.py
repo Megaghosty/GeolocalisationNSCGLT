@@ -3,20 +3,20 @@ import json
 import mysql.connector
 
 # Paramètres MQTT
-MQTT_SERVER = "192.168.1.__________"  # Adresse IP ou nom de domaine du serveur MQTT
+MQTT_SERVER = "192.168.1.20"  # Adresse IP ou nom de domaine du serveur MQTT
 MQTT_PORT = 1883  # Port du serveur MQTT
-MQTT_TOPIC = "_______/________"  # Topic MQTT
+MQTT_TOPIC = "numeEch/RSSI"  # Topic MQTT
 
 ####
-conn = mysql.connector.connect(host="192.168.1.________",
+conn = mysql.connector.connect(host="192.168.1.20",
                                       user="root",
                                       password="root",
-                                      database="______________" ) #Nom de la base
+                                      database="mesure_esp32" ) #Nom de la base
 
 cursor = conn.cursor()
 
 
-cursor.execute("SELECT * FROM __________")   #NOM DE LA TABLE
+cursor.execute("SELECT * FROM mesureESP32")   #NOM DE LA TABLE
 
 myresult = cursor.fetchall()
 
@@ -34,17 +34,19 @@ def on_message(client, userdata, msg):
         # Décoder le message JSON
         payload = msg.payload.decode()
         data = json.loads(payload)
-        print(f"Échantillon: {data['sample_index']}, Température: {data['rssi']}")
+        print(f"Échantillon: {data['num_echantillon']}, Valeur en dbm: {data['valeur_Rssi']}")
         
-        #A VOUS DE METTRE DANS LA TABLE data['sample_index'] et str(data['rssi'])
+        # Préparer et exécuter la requête SQL
+        sql = "INSERT INTO mesureESP32 (num_echantillon, valeur_Rssi,date_capture) VALUES (%s, %s, CURRENT_TIMESTAMP)"
+        values = (data['num_echantillon'], data['valeur_Rssi'])
+        cursor.execute(sql, values)
+        conn.commit()
         
-        sql = "INSERT _______"
-        _______________________
-        _______________________
-        _______________________
         print("++++++++++++++++++++++++++++++++++++Dans BDD")
     except json.JSONDecodeError:
         print(f"Erreur: Message reçu non JSON valide {payload}")
+    except mysql.connector.Error as err:
+        print(f"Erreur MySQL: {err}")
 
 client = mqtt.Client()
 client.on_connect = on_connect
@@ -59,3 +61,7 @@ try:
 except KeyboardInterrupt:
     print("Arrêt du client MQTT.")
     client.disconnect()
+finally:
+    cursor.close()
+    conn.close()
+    print("Connexion à la base de données fermée.")
