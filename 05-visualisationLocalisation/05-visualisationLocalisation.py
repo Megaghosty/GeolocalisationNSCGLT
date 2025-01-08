@@ -30,7 +30,7 @@ print("Nombre total de valeurs:", len(rssi_values))
 
 # Fonction pour calculer la distance
 def calculate_distance(rssi):
-    return 10**((rssi - (-26.836)) / -23.994)
+    return 10**((rssi - (-32)) / -23.994)
 
 # Traitement des données par groupe de 20 pour chaque borne
 rayons = []
@@ -68,7 +68,7 @@ rayonCIEL2 = rayons[1] if len(rayons) > 1 else 0
 rayonCIEL3 = rayons[2] if len(rayons) > 2 else 0
 
 # Coordonnées des balises
-points = [(0, 0, rayonCIEL1), (6, 5, rayonCIEL2), (18, 1, rayonCIEL3)]
+points = [(0, 0, rayonCIEL1), (10, 5, rayonCIEL2), (18, 1, rayonCIEL3)]
 
 # Calculer la position estimée
 estimated_position = trilaterate(points)

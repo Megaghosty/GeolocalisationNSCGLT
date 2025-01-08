@@ -35,7 +35,7 @@ def on_message(client, userdata, msg):
     try:
         payload = msg.payload.decode()
         data = json.loads(payload)
-        print(f"Échantillon: {data['num_echantillon']}, Valeur en dbm: {data['valeur_Rssi']}")
+        print(f"Borne {data['borne']} Échantillon: {data['num_echantillon']}, Valeur en dbm: {data['valeur_Rssi']}")
         
         sql = "INSERT INTO mesureESP32 (num_echantillon, valeur_Rssi, date_capture) VALUES (%s, %s, CURRENT_TIMESTAMP)"
         values = (data['num_echantillon'], data['valeur_Rssi'])
