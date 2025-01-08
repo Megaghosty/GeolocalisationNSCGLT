@@ -6,7 +6,7 @@
 const char* ssids[] = {"CIEL1", "CIEL2", "CIEL3"};
 const char* passwords[] = {"WCIELB2111", "WCIELB2112", "WCIELB2113"};
 const int NUM_NETWORKS = 3;
-const int SAMPLES_PER_NETWORK = 10;
+const int SAMPLES_PER_NETWORK = 20;  // Modifié à 20 échantillons par borne
 
 // Paramètres du serveur MQTT
 const char* mqtt_server = "192.168.1.20";
